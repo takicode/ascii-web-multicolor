@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii web generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+<body>
+    <section >
+        <div class="ascii-bg">
+            <div>
+                Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span>
+            </div>
+              <div>
+                Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span>
+            </div>
+        </div>
+         <div class="ascii-bg">
+            <div>
+                Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span>
+            </div>
+              <div>
+                Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span>
+            </div>
+        </div>
+         <div class="ascii-bg">
+            <div>
+                Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span>
+            </div>
+              <div>
+                Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span>
+            </div>
+        </div>
+        <div class="ascii-bg">
+            <div>
+                Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span>
+            </div>
+              <div>
+                Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span> Ascii Art<span> Generator</span>
+            </div>
+        </div>
+
+
+        <main>
+          <div class="ascii-gen">
+                <h2>Ascii Art Generator </h2>
+                <form action="/ascii-art" method="POST" class="form-input">
+                        <div class="form-text">
+                            <textarea name="text" placeholder="hello world" class="input-field"></textarea>
+                            <input type="text" name="coloredWord" placeholder="he,rld" class="coloredWord">
+                            <input type="text" name="color" placeholder="green,yellow" class="coloredWord">
+          
+                        </div>
+                        <div class="select-type">
+                            <select name="banner" >
+                                <option value="standard">standard</option>
+                                <option value="thinkertoy">thinkertoy</option>
+                                <option value="shadow">shadow</option>
+                            </select>
+                    </div>
+                <button type="submit" class="btn">Generate</button>
+                </form>
+                <p class="toast">{{if .Message}}{{.Message | safe}}{{end}}</p>
+                <div class="result">    
+                    <pre>{{if .Result}}{{.Result | safe}}{{end}}</pre>
+                </div>
+            </div>
+        </main>
+    </section>
+   
+</body>
+</html>
+
+
