@@ -11,6 +11,9 @@ import (
 type pageData struct {
   Result string
   Message string
+  WordString string
+  Substring  string
+  Coloring   string
 }
 
 var templ = template.Must(
@@ -63,6 +66,9 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
   data := pageData{
     Result: result,
     Message: message,
+    WordString:inputString,
+    Substring:inputWord,
+    Coloring:color,
 }
 
   if err := templ.Execute(w, data); err != nil {
