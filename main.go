@@ -5,7 +5,6 @@ import (
   "log"
   "net/http"
   "ascii-web-multicolor/core"
-  "fmt"
 )
 
 type pageData struct {
@@ -57,10 +56,6 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
   inputWord   := r.FormValue("coloredWord")
   color       := r.FormValue("color")
 
-  fmt.Println(inputString)
-  fmt.Println(inputWord)
-  fmt.Println(color)
-  fmt.Println(banner)
   result, message := core.ColorLogic(inputString, banner, inputWord, color)
 
   data := pageData{
