@@ -28,32 +28,32 @@ func ColorLogic(inputString, banner, inputWord, color string)(string, string){
 	inputColors := strings.Split(TrimColor, ",")
 	inputWords := strings.Split(inputWord, ",")
 
-	minLength := len(inputColors)
-	if len(inputWords) < minLength {
-		minLength = len(inputWords)
-	}
-	
-	for i := 0; i < minLength; i++ {
-		colorMap[inputWords[i]] = inputColors[i]
-	}
+    minLength := len(inputColors)
+    if len(inputWords) < minLength {
+        minLength = len(inputWords)
+    }
+    
+    for i := 0; i < minLength; i++ {
+        colorMap[inputWords[i]] = inputColors[i]
+    }
  }
 
 
  if TrimInputString == "" {
-	result = ""
-	message = `<span style="color:red">No text provided</span>`
+    result = ""
+    message = `<span style="color:red">No text provided</span>`
 
  } else if TrimInputString == "" && TrimColor != "" {
-	result = `<span style="color:` + color + `">` + AsciiArt + `</span>`
-	message = `<span style="color:red">input color text to see color magic</span>`
+    result = `<span style="color:` + color + `">` + AsciiArt + `</span>`
+    message = `<span style="color:red">input color text to see color magic</span>`
 
  } else if TrimInputString == "" && TrimColor == "" {
-	result = AsciiArt
-	message = `<span style="color:red">input color text to see color magic</span>`
+    result = AsciiArt
+    message = `<span style="color:red">input color text to see color magic</span>`
 
  } else if color == "" || !containsAny(TrimInputString, strings.Split(inputWord, ",")) {
-	result = AsciiArt
-	message = `<span style="color:red">select color to see color magic</span>`
+    result = AsciiArt
+    message = `<span style="color:red">select color to see color magic</span>`
 
  } else {
     var blockResults []string
@@ -72,8 +72,7 @@ func ColorLogic(inputString, banner, inputWord, color string)(string, string){
         }
 
         var segments []segment
-        remaining := block  // use block, not inputString
-
+        remaining := block  
         for len(remaining) > 0 {
             minIdx := -1
             var stringWord string
@@ -145,6 +144,6 @@ func ColorLogic(inputString, banner, inputWord, color string)(string, string){
     result = strings.Join(blockResults, "\n")
     message = `<span style="color:green">Yup! Check the magic below</span>`
 
-	}
+    }
  return result, message
 }

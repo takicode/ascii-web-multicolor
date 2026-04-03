@@ -10,6 +10,9 @@ import (
 type pageData struct {
   Result string
   Message string
+  WordString string
+  Substring  string
+  Coloring   string
 }
 
 var templ = template.Must(
@@ -60,17 +63,23 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
   inputWord   := r.FormValue("coloredWord")
   color       := r.FormValue("color")
 
+<<<<<<< HEAD
   if strings.TrimSpace(inputString) == "" || banner == ""{
     http.Error(w, "400-Bad-Request", http.StatusBadRequest)
     return
   }
 
 
+=======
+>>>>>>> a0c3c2e7ace0cff288fb15478fbbb88725759db7
   result, message := core.ColorLogic(inputString, banner, inputWord, color)
 
   data := pageData{
     Result: result,
     Message: message,
+    WordString:inputString,
+    Substring:inputWord,
+    Coloring:color,
 }
 
   if err := templ.Execute(w, data); err != nil {

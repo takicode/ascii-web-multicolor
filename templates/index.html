@@ -43,13 +43,13 @@
 
 
         <main>
-          <div class="ascii-gen">
+            <div class="ascii-gen">
                 <h2>Ascii Art Generator </h2>
                 <form action="/ascii-art" method="POST" class="form-input">
                         <div class="form-text">
-                            <textarea name="text" placeholder="hello world" class="input-field"></textarea>
-                            <input type="text" name="coloredWord" placeholder="he,rld" class="coloredWord">
-                            <input type="text" name="color" placeholder="green,yellow" class="coloredWord">
+                            <textarea name="text" placeholder="hello world" class="input-field">{{if .WordString}}{{.WordString | safe}}{{end}}</textarea>
+                            <input type="text" name="coloredWord" placeholder="he,rld" class="coloredWord" value="{{if .Substring}}{{.Substring | safe}}{{end}}" >
+                            <input type="text" name="color" placeholder="green,yellow" class="coloredWord" value="{{if .Coloring}}{{.Coloring | safe}}{{end}}">
           
                         </div>
                         <div class="select-type">
@@ -58,12 +58,49 @@
                                 <option value="thinkertoy">thinkertoy</option>
                                 <option value="shadow">shadow</option>
                             </select>
-                    </div>
-                <button type="submit" class="btn">Generate</button>
+                        </div>
+                        <button type="submit" class="btn">Generate</button>
                 </form>
                 <p class="toast">{{if .Message}}{{.Message | safe}}{{end}}</p>
                 <div class="result">    
                     <pre>{{if .Result}}{{.Result | safe}}{{end}}</pre>
+                </div>
+                <div>
+                    <input type="checkbox" id="modal-toggle" hidden>
+                    <header class="toggles">
+                        <label for="modal-toggle" >🫵Press Me😉</label>
+                    </header>
+                     <section class="overlay">
+                        <div class="modal">
+                            <h1>HOW THE APP WORKS</h1>
+                           <div class="instruction">
+                            <h3>1. Type your text</h3>
+                            <p>Enter any word or sentence in the big text box.</p>
+                            <p>Example: hello world</p>
+                            <h3>2. Choose words to color (optional)</h3>
+                            <p>In the next input, type the parts of your text you want to highlight.
+                            Separate them with commas.</p>
+                            <p>Example: he,rld
+                            <h3>3. In the color input, type colors that match each word in order. </h3>
+                            <p>Example: green,yellow 
+                                meaning that he → green
+                                rld → yellow</p>  
+                            <h3>4. Pick a style</h3>
+                            <p>Select how your ASCII art should look:
+                                standard
+                                shadow
+                                thinkertoy</p>
+                            <h3>5. Click “Generate”</h3>
+                            <p> The app transforms your text into ASCII art instantly.
+                                See the magic ✨
+                                </p>
+                            <p>Your text appears as large ASCII art below
+                                Selected words are colored based on your input</p>
+                            <label for="modal-toggle" class="close-btn" >X</label>
+                           </div>
+                            
+                        </div>
+                    </section>
                 </div>
             </div>
         </main>
@@ -71,5 +108,10 @@
    
 </body>
 </html>
+
+
+
+
+
 
 
