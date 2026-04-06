@@ -2,7 +2,6 @@ package core
 
 import (
   "strings"
-	"fmt"
 )
 func containsAny(inputString string, words []string) bool {
     for _, word := range words {

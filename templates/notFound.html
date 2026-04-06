@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+    <link rel="stylesheet" href="/static/404.css">
+</head>
+<body>
+    <main>
+        <pre class="float">{{if .Error404}}{{.Error404}}{{end}}</pre>
+        <pre class="float delay">{{if .Error}}{{.Error}}{{end}}</pre>
+        <a href="/">Go back to Home</a>
+    </main>
+</body>
+</html>
