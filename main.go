@@ -29,8 +29,8 @@ func main(){
    http.HandleFunc("/", HomeHandler)
    http.HandleFunc("/ascii-art", GenerateHandler)
 
-   log.Println("Server listening on port 8080")
-  log.Fatal(http.ListenAndServe(":8080", nil)) 
+   log.Println("Server listening on port 8081")
+  log.Fatal(http.ListenAndServe(":8081", nil)) 
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request){
@@ -82,7 +82,18 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request){
 
 
     if text == ""|| !bannerType[banner]{
-      http.Error(w, "400-invalid input", http.StatusBadRequest)
+      w.WriteHeader(http.StatusBadRequest)
+
+       err := templ.ExecuteTemplate(w, "index.html", pageData{
+        Message: `<span style="color:red">Invalid input or banner</span>`,
+        WordString: text,
+        Coloring: color,
+        Substring: coloredWord,
+    })
+
+    if err != nil {
+        http.Error(w, "500-internal server error", http.StatusInternalServerError)
+    }
       return
     }
   

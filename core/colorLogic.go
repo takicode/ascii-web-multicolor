@@ -44,16 +44,16 @@ func ColorLogic(inputString, banner, inputWord, color string)(string, string){
 
  } else if TrimInputString == "" && TrimColor != "" {
     result = `<span style="color:` + color + `">` + AsciiArt + `</span>`
-    message = `<span style="color:red">input color text to see color magic</span>`
+    message = `<span style="color:orange">input color text to see color magic</span>`
 
  } else if TrimInputString == "" && TrimColor == "" {
     result = AsciiArt
-    message = `<span style="color:red">input color text to see color magic</span>`
+    message = `<span style="color:orange">input color text to see color magic</span>`
 
  } else if color == "" || !containsAny(TrimInputString, strings.Split(inputWord, ",")) {
     result = AsciiArt
-    message = `<span style="color:red">select color to see color magic</span>`
-
+    message = `<span style="color:orange">select color to see color magic</span>`
+    
  } else {
     var blockResults []string
 
