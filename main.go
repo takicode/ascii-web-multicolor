@@ -73,8 +73,16 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request){
     color := r.FormValue("color")
     coloredWord := r.FormValue("coloredWord")
 
-    if text == ""{
-      http.Error(w, "400-Missing required field", http.StatusBadRequest)
+
+    bannerType := map[string]bool{
+      "thinkertoy":true,
+      "standard":true,
+      "shadow":true,
+    }
+
+
+    if text == ""|| !bannerType[banner]{
+      http.Error(w, "400-invalid input", http.StatusBadRequest)
       return
     }
   
